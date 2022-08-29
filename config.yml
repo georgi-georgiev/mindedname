@@ -1,0 +1,27 @@
+kafka:
+  broker: "kafka:29092"
+
+postgres:
+  driver: "postgres"
+  username: "cns"
+  password: "cns"
+  host: "postgres"
+  port: "5432"
+  dbname: "test"
+
+mongo:
+  url: "mongodb://mongo:27017"
+  username: "citizix"
+  password: "S3cret"
+  dbname: "test"
+
+cassandra:
+  hosts: cassandra
+  port: 9042
+  keyspace: test
+  user: cassandra
+  pass: WqsPCKoRjZ2yr5LWsD
+
+redis:
+  host: "redis:6379"
+  pass: ""

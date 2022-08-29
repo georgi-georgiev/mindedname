@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  order:
+    container_name: "order"
+    image: ${DOCKER_REGISTRY-}order
+    ports:
+      - "7373:7373"
+    build:
+      context: .
+      dockerfile: cmd/order/Dockerfile
+    networks:
+      - my-proxy-net
+    volumes: 
+      - ./coverage:/etc/cover/
+
+  customer:
+    container_name: "customer"
+    image: ${DOCKER_REGISTRY-}customer
+    ports:
+      - "7474:7474"
+    build:
+      context: .
+      dockerfile: cmd/customer/Dockerfile
+    networks:
+      - my-proxy-net
+    volumes: 
+      - ./coverage:/etc/cover/
+
+  payment:
+    container_name: "payment"
+    image: ${DOCKER_REGISTRY-}payment
+    ports:
+      - "7575:7575"
+    build:
+      context: .
+      dockerfile: cmd/payment/Dockerfile
+    networks:
+      - my-proxy-net
+    volumes: 
+     - ./coverage:/etc/cover/
+
+networks:
+  my-proxy-net:
+    external:
+      name: custom_network  
+      
